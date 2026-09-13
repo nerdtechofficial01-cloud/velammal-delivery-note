@@ -1,0 +1,557 @@
+/* =========================================================
+   VELAMMAL DELIVERY NOTE
+   DOCUMENT DESIGN SYSTEM
+   ========================================================= */
+@font-face {
+  font-family: "Nimbus Sans";
+  src: url("../assets/fonts/NimbusSans-Regular.ttf")
+    format("truetype");
+
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nimbus Sans";
+  src: url("../assets/fonts/NimbusSans-Bold.ttf")
+    format("truetype");
+
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nimbus Sans";
+  src: url("../assets/fonts/NimbusSans-Italic.ttf")
+    format("truetype");
+
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nimbus Sans";
+  src: url("../assets/fonts/NimbusSans-BoldItalic.ttf")
+    format("truetype");
+
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --document-navy: #1a365d;
+  --document-blue: #2b6cb0;
+
+  --document-text: #334155;
+  --document-muted: #64748b;
+
+  --document-border: #cbd5e1;
+  --document-light: #edf2f7;
+
+  --document-background: #ffffff;
+}
+
+.delivery-note {
+  width: 210mm;
+  min-height: 297mm;
+  height: auto;
+  padding: 12mm;
+  box-sizing: border-box;
+  background: var(--document-background);
+  color: var(--document-text);
+  font-family: "Nimbus Sans", Arial, Helvetica, sans-serif;
+  font-size: 7.5px;
+  line-height: 1.1;
+  overflow: visible;
+}
+
+/* ---------------------------------------------------------
+   PRINT
+   --------------------------------------------------------- */
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    width: 210mm;
+    min-height: 297mm;
+    background: #ffffff;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  /* Force Chrome to print document colors */
+  .delivery-note,
+  .document-label,
+  .stock-section-title,
+  .info-box,
+  .stock-table thead th,
+  .stock-table tbody td,
+  .vehicle-details,
+  .signature-box {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .delivery-note {
+  width: 210mm !important;
+  min-width: 210mm !important;
+  max-width: 210mm !important;
+
+  min-height: 297mm !important;
+  height: auto !important;
+
+  margin: 0 !important;
+  padding: 12mm !important;
+
+  transform: none !important;
+  zoom: 1 !important;
+
+  box-shadow: none !important;
+
+  overflow: visible !important;
+}
+}
+/* =========================================================
+   DOCUMENT HEADER
+   ========================================================= */
+
+.document-header {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.document-header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.school-title {
+  color: var(--document-navy);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.department-title {
+  margin-top: 2px;
+
+  color: var(--document-navy);
+
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.office-title {
+  margin-top: 2px;
+
+  color: var(--document-muted);
+
+  font-size: 6.5px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.document-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  text-align: right;
+}
+
+.document-label {
+  width: 34mm;
+  min-width: 34mm;
+
+  padding: 2px 6px;
+
+  background: var(--document-navy);
+  color: #ffffff;
+
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1.2;
+
+  text-align: center;
+}
+
+.document-subtitle {
+  margin-top: 2px;
+
+  color: var(--document-muted);
+
+  font-size: 7px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.document-header-rule {
+  width: 100%;
+  height: 0.35mm;
+
+  margin-top: 2.5mm;
+
+  background: var(--document-navy);
+}
+
+/* =========================================================
+   DISPATCH / CONSIGNEE DETAILS
+   ========================================================= */
+
+.document-info-grid {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  column-gap: 3.5mm;
+
+  margin-top: 2.5mm;
+}
+
+.info-box {
+  width: 100%;
+
+  border: 0.25mm solid var(--document-border);
+
+  background: #f8fafc;
+
+  box-sizing: border-box;
+}
+
+.info-box-title {
+  width: 100%;
+  height: 5mm;
+  padding: 1.2mm 2mm;
+  box-sizing: border-box;
+  color: var(--document-navy);
+  font-size: 7.5px;
+  font-weight: 700;
+  line-height: 1;
+  border-bottom: 0.2mm solid var(--document-border);
+}
+
+.info-row {
+  height: 5mm;
+  min-height: 5mm;
+  padding: 0 2mm;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  font-size: 7px;
+  line-height: 1;
+}
+
+.info-label {
+  flex: 0 0 auto;
+
+  color: var(--document-muted);
+
+  font-weight: 700;
+}
+
+.info-value {
+  margin-left: 2mm;
+
+  color: var(--document-text);
+
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   STOCK SECTION
+   ========================================================= */
+
+.stock-section {
+  width: 100%;
+  margin-top: 2.5mm;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.stock-section-title {
+  width: 100%;
+  height: 5mm;
+
+  padding: 1.25mm 2mm;
+
+  box-sizing: border-box;
+
+  background: var(--document-blue);
+  color: #ffffff;
+
+  font-size: 7.5px;
+  font-weight: 700;
+  line-height: 1;
+
+  display: flex;
+  align-items: center;
+}
+
+.stock-table {
+  width: 100%;
+
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  font-size: 7px;
+  line-height: 1;
+}
+
+.stock-table th,
+.stock-table td {
+  height: 5.5mm;
+  min-height: 5.5mm;
+
+  padding: 0 1.7mm;
+
+  box-sizing: border-box;
+
+  border: 0.2mm solid var(--document-border);
+
+  vertical-align: middle;
+}
+
+.stock-table thead th {
+  background: var(--document-light);
+
+  color: var(--document-text);
+
+  font-weight: 700;
+
+  text-align: left;
+}
+
+.stock-table tbody td {
+  background: #ffffff;
+
+  color: var(--document-text);
+
+  font-weight: 400;
+}
+
+.stock-table tbody tr {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.stock-table .col-serial {
+  width: 7%;
+  text-align: left;
+}
+
+.stock-table .col-description {
+  width: 51%;
+  text-align: left;
+}
+
+.stock-table .col-quantity {
+  width: 21%;
+  text-align: center;
+}
+
+/* =========================================================
+   VEHICLE DETAILS
+   ========================================================= */
+
+.vehicle-details {
+  width: 100%;
+  height: 6mm;
+
+  margin-top: 2.5mm;
+  padding: 0 2mm;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+
+  gap: 2.5mm;
+
+  border: 0.25mm dashed var(--document-border);
+
+  background: #f8fafc;
+
+  color: var(--document-text);
+
+  font-size: 7px;
+  line-height: 1;
+}
+
+.vehicle-details strong {
+  font-weight: 700;
+}
+
+.vehicle-divider {
+  color: var(--document-muted);
+}
+
+/* =========================================================
+   SIGNATURE SECTION
+   ========================================================= */
+
+.signature-section {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 2.5mm;
+
+  margin-top: 2.5mm;
+}
+
+.signature-box {
+  height: 16mm;
+
+  padding: 1.5mm 2mm;
+
+  box-sizing: border-box;
+
+  border: 0.25mm solid var(--document-border);
+
+  background: #ffffff;
+}
+
+.signature-title {
+  color: var(--document-navy);
+
+  font-size: 7.2px;
+  font-weight: 700;
+  line-height: 1;
+
+  margin-bottom: 1.3mm;
+}
+
+.signature-role {
+  color: var(--document-muted);
+
+  font-size: 6.5px;
+  font-weight: 400;
+  line-height: 1.1;
+
+  min-height: 4mm;
+}
+
+.signature-line {
+  width: 100%;
+
+  margin-top: 3.5mm;
+
+  border-top: 0.2mm solid var(--document-border);
+}
+
+.signature-label {
+  margin-top: 1.2mm;
+
+  color: var(--document-muted);
+
+  font-size: 6.2px;
+  line-height: 1;
+}
+
+/* =========================================================
+   DOCUMENT NOTES
+   ========================================================= */
+
+.document-notes {
+  width: 100%;
+
+  margin-top: 2mm;
+
+  color: var(--document-muted);
+
+  font-size: 6.2px;
+  font-style: italic;
+  font-weight: 400;
+
+  line-height: 1.2;
+
+  text-align: left;
+}
+
+.document-notes strong {
+  font-weight: 700;
+}
+/* =========================================================
+   PRINT OVERRIDE
+   Print ONLY the delivery note
+   ========================================================= */
+
+@media print {
+
+  /* Hide application UI */
+  .app-header,
+  .generator-panel {
+    display: none !important;
+  }
+
+  /* Remove the two-column generator layout */
+  .app-content {
+    display: block !important;
+    width: 210mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Make preview container exactly A4 */
+  .preview-panel {
+    display: block !important;
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+    transform: none !important;
+    zoom: 1 !important;
+  }
+
+  /* The actual document */
+  .delivery-note {
+  width: 210mm !important;
+  min-width: 210mm !important;
+  max-width: 210mm !important;
+
+  height: auto !important;
+  min-height: 297mm !important;
+
+  margin: 0 !important;
+  padding: 12mm !important;
+
+  transform: none !important;
+  zoom: 1 !important;
+
+  box-shadow: none !important;
+
+  overflow: visible !important;
+}
+}
+@media screen {
+  .delivery-note {
+    height: auto;
+    min-height: 297mm;
+    overflow: visible;
+  }
+}

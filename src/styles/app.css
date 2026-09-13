@@ -1,0 +1,380 @@
+.app {
+  min-height: 100vh;
+  background: #f4f6f8;
+}
+
+.app-header {
+  height: 72px;
+  padding: 0 32px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-brand-title {
+  color: #1a365d;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.app-brand-subtitle {
+  margin-top: 4px;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.app-content {
+  width: 100%;
+  min-height: calc(100vh - 72px);
+
+  display: grid;
+  grid-template-columns: 420px minmax(0, 1fr);
+}
+
+.generator-panel {
+  padding: 28px;
+  background: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  overflow-y: auto;
+}
+
+.preview-panel {
+  position: sticky;
+  top: 20px;
+
+  height: calc(100vh - 40px);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  box-sizing: border-box;
+  padding: 20px;
+
+  background: #f1f5f9;
+  border-radius: 8px;
+}
+
+.preview-panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.preview-panel::-webkit-scrollbar-track {
+  background: #e2e8f0;
+  border-radius: 4px;
+}
+
+.preview-panel::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 4px;
+}
+
+.preview-panel::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* =========================================================
+   FORM CONTROLS
+   ========================================================= */
+
+.form-group {
+  margin-top: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.form-group input {
+  width: 100%;
+  height: 38px;
+  padding: 0 10px;
+  box-sizing: border-box;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+
+  background: #ffffff;
+  color: #334155;
+
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #2563eb;
+}
+
+.generator-panel hr {
+  margin: 24px 0 20px;
+  border: 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.generator-panel h3 {
+  margin: 0;
+  color: #1a365d;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   STOCK EDITOR
+   ========================================================= */
+
+.stock-editor {
+  margin-top: 28px;
+}
+
+.stock-editor h3 {
+  margin: 0 0 16px;
+  color: #1a365d;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.stock-editor-item {
+  margin-bottom: 14px;
+  padding: 14px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+
+  background: #f8fafc;
+}
+
+.stock-editor-item-number {
+  margin-bottom: 10px;
+
+  color: #2b6cb0;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.stock-editor .form-group {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.stock-editor .form-group:last-child {
+  margin-bottom: 0;
+}
+
+.stock-editor .form-group label {
+  font-size: 12px;
+}
+
+.stock-editor .form-group input {
+  height: 34px;
+  font-size: 12px;
+}
+
+.stock-editor-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.form-divider {
+  margin: 28px 0 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.form-section-title {
+  margin: 0 0 16px;
+  color: #1a365d;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.form-group textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  box-sizing: border-box;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+
+  background: #ffffff;
+  color: #334155;
+
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+
+  resize: vertical;
+  outline: none;
+}
+
+.form-group textarea:focus {
+  border-color: #2563eb;
+}
+
+.download-pdf-button {
+  width: 100%;
+  height: 44px;
+  margin-top: 28px;
+  border: none;
+  border-radius: 6px;
+  background: #1a365d;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.download-pdf-button:hover {
+  background: #2b6cb0;
+}
+
+.download-pdf-button:active {
+  transform: translateY(1px);
+}
+
+.reset-form-button {
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #334155;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.reset-form-button:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+.stock-editor-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.stock-editor-item-header .stock-editor-item-number {
+  margin-bottom: 0;
+}
+
+.remove-item-button {
+  border: 1px solid #fecaca;
+  border-radius: 5px;
+  padding: 5px 9px;
+  background: #ffffff;
+  color: #dc2626;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.remove-item-button:hover {
+  background: #fef2f2;
+}
+
+.add-item-button {
+  width: 100%;
+  height: 36px;
+  margin-top: 4px;
+  border: 1px dashed #94a3b8;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #2563eb;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.add-item-button:hover {
+  background: #f8fafc;
+  border-color: #2563eb;
+}
+
+.stock-editor-category-header {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.category-name-group {
+  flex: 1;
+  margin-top: 0;
+}
+
+.category-name-group input {
+  font-weight: 600;
+}
+
+.remove-category-button {
+  flex: 0 0 auto;
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #dc2626;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.remove-category-button:hover {
+  background: #fef2f2;
+}
+
+.add-category-button {
+  width: 100%;
+  height: 42px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+  border: 1px dashed #2563eb;
+  border-radius: 6px;
+
+  background: #ffffff;
+  color: #2563eb;
+
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  position: sticky;
+  bottom: 10px;
+  z-index: 20;
+
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+}
+
+.add-category-button:hover {
+  background: #eff6ff;
+  border-color: #2563eb;
+}
