@@ -6,6 +6,7 @@ import VehicleDetails from "./VehicleDetails";
 import SignatureSection from "./SignatureSection";
 import DocumentNotes from "./DocumentNotes";
 import type { DeliveryNoteData } from "../../data/deliveryNoteData";
+import logo from "../../assets/logo.png";
 
 function DeliveryNote({ data }: { data: DeliveryNoteData }) {
   return (
@@ -15,16 +16,24 @@ function DeliveryNote({ data }: { data: DeliveryNoteData }) {
 
       <header className="document-header">
         <div className="document-header-left">
-          <div className="school-title">
-            {data.headerSchoolName || "VELAMMAL GROUP OF SCHOOLS"}
-          </div>
+          <img
+            src={logo}
+            alt="Velammal Nexus"
+            className="document-logo"
+          />
 
-          <div className="department-title">
-            PURCHASE DEPARTMENT
-          </div>
+          <div className="document-header-text">
+            <div className="school-title">
+              {data.headerSchoolName || "VELAMMAL GROUP OF SCHOOLS"}
+            </div>
 
-          <div className="office-title">
-            Head Office / Main Store Dispatch Unit
+            <div className="department-title">
+              PURCHASE DEPARTMENT
+            </div>
+
+            <div className="office-title">
+              Head Office / Main Store Dispatch Unit
+            </div>
           </div>
         </div>
 

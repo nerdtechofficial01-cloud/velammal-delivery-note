@@ -136,7 +136,22 @@
 
 .document-header-left {
   display: flex;
+  align-items: flex-start;
+  gap: 3mm;
+}
+
+.document-logo {
+  width: 30mm;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.document-header-text {
+  display: flex;
   flex-direction: column;
+  padding-top: 0.5mm;
 }
 
 .school-title {
