@@ -139,6 +139,17 @@ const bodyPageHeightPx =
       bottomMarginMm) *
     (fullCanvas.width / pdfWidthMm)
   );
+    const notesElement = element.querySelector(
+  ".document-notes"
+) as HTMLElement | null;
+
+const contentEndPx = notesElement
+  ? Math.ceil(
+      (notesElement.getBoundingClientRect().bottom -
+        elementRect.top) *
+        canvasScale
+    )
+  : fullCanvas.height;
 
     let bodyStartPx = headerHeightPx;
 
@@ -147,24 +158,13 @@ const bodyPageHeightPx =
     const tableRows = Array.from(
   element.querySelectorAll(".stock-table tbody tr")
 ) as HTMLTableRowElement[];
-
-const rowBottomsPx = tableRows
-  .map((row) => {
-    const rect = row.getBoundingClientRect();
-
-    return Math.round(
-      (rect.bottom - elementRect.top) * canvasScale
-    );
-  })
-  .filter((value) => value > headerHeightPx)
-  .sort((a, b) => a - b);
   
-    while (bodyStartPx < fullCanvas.height) {
+    while (bodyStartPx < contentEndPx) {
       /*
        * Determine how much body content fits on this page.
        */
       const remainingHeight =
-        fullCanvas.height - bodyStartPx;
+         contentEndPx - bodyStartPx;
 
         
 
@@ -182,21 +182,38 @@ const rowBottomsPx = tableRows
 const proposedEndPx =
   bodyStartPx + currentBodyHeightPx;
 
-const safeRowBottoms = rowBottomsPx.filter(
-  (rowBottom) =>
-    rowBottom > bodyStartPx &&
-    rowBottom <= proposedEndPx
-);
+/*
+ * Only adjust the page boundary when it actually
+ * falls INSIDE a product row.
+ *
+ * If the boundary falls between rows, leave it alone.
+ * This prevents short delivery notes from unnecessarily
+ * moving signatures/notes to a second page.
+ */
+const rowContainingBoundary = tableRows.find((row) => {
+  const rect = row.getBoundingClientRect();
 
-if (
-  remainingHeight > bodyPageHeightPx &&
-  safeRowBottoms.length > 0
-) {
-  const lastSafeRowBottom =
-    safeRowBottoms[safeRowBottoms.length - 1];
+  const rowTopPx =
+    (rect.top - elementRect.top) * canvasScale;
+
+  const rowBottomPx =
+    (rect.bottom - elementRect.top) * canvasScale;
+
+  return (
+    proposedEndPx > rowTopPx &&
+    proposedEndPx < rowBottomPx
+  );
+});
+
+if (rowContainingBoundary) {
+  const rect =
+    rowContainingBoundary.getBoundingClientRect();
+
+  const rowTopPx =
+    (rect.top - elementRect.top) * canvasScale;
 
   currentBodyHeightPx =
-    lastSafeRowBottom - bodyStartPx;
+    rowTopPx - bodyStartPx;
 }
 
       /*
