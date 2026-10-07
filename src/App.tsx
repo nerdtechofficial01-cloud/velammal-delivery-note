@@ -661,6 +661,21 @@ const handleReset = () => {
           </div>
 
           <div className="form-group">
+            <label>Received By Role</label>
+            <input
+              type="text"
+              value={deliveryNoteData.receivedByRole}
+              onChange={(event) =>
+                setDeliveryNoteData({
+                  ...deliveryNoteData,
+                  receivedByRole: event.target.value,
+                })
+              }
+              placeholder="e.g. Admin Officer / VVY School"
+            />
+          </div>
+          
+          <div className="form-group">
             <label>Received By</label>
 
             <input

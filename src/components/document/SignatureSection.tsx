@@ -46,7 +46,7 @@ function SignatureSection({ data }: SignatureSectionProps) {
         </div>
 
         <div className="signature-role">
-          Admin Officer / VVY Authority
+          {data.receivedByRole || "Admin Officer / VVY School"}
         </div>
 
         <div className="signature-line" />

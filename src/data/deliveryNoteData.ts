@@ -32,6 +32,7 @@ export interface DeliveryNoteData {
 
   dispatchedBy: string;
   receivedBy: string;
+  receivedByRole: string;
 }
 
 export const initialDeliveryNoteData: DeliveryNoteData = {
@@ -215,4 +216,5 @@ export const initialDeliveryNoteData: DeliveryNoteData = {
   "Please verify all quantities and physical condition of goods upon arrival. Any discrepancy or damage must be noted on this delivery note and reported immediately to the Purchase Department within 24 hours.",
   dispatchedBy: "",
   receivedBy: "",
+  receivedByRole: "Admin Officer / VVY School",
 };
